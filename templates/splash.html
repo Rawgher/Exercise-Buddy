@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block title %}Login/Register{% endblock %} {% block
+content %}
+
+<h1>Join Exercise Buddy</h1>
+<hr />
+<div class="row">
+  <div class="col-md-6 col-sm-12">
+    <h2>Login</h2>
+    <form action="{{ url_for('login') }}" method="POST">
+      {{ login_form.hidden_tag() }} {% for field in login_form if
+      field.widget.input_type != 'hidden'%}
+      <div class="form-group">
+        {{field.label}} {{field(class_="form-control")}} {% for err in
+        field.errors %}
+        <small class="form-text text-danger"> {{err}} </small>
+        {% endfor %}
+      </div>
+      {% endfor %}
+      <button class="btn btn-success btn">Submit</button>
+    </form>
+  </div>
+
+  <div class="col-md-6 col-sm-12">
+    <h2>Register</h2>
+    <form action="{{ url_for('register') }}" method="POST">
+      {{ register_form.hidden_tag() }} {% for field in register_form if
+      field.widget.input_type != 'hidden'%}
+      <div class="form-group">
+        {{field.label}} {{field(class_="form-control")}} {% for err in
+        field.errors %}
+        <small class="form-text text-danger"> {{err}} </small>
+        {% endfor %}
+      </div>
+      {% endfor %}
+      <button class="btn btn-success btn">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

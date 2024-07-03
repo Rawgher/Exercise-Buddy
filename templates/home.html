@@ -1,0 +1,52 @@
+{% extends 'base.html' %} {% block title %}Exercise Buddy Home{% endblock %} {%
+block content %}
+
+<h1>What would you like to workout today?</h1>
+<div class="row">
+  <form method="POST" action="{{ url_for('search') }}" class="search-form">
+    <div class="form-row">
+      {{ search_form.hidden_tag() }} {% for field in search_form if
+      field.widget.input_type != 'hidden'%}
+      <div class="col">
+        {{field.label}} {{field(class_="form-control")}} {% for err in
+        field.errors %}
+        <small class="form-text text-danger"> {{err}} </small>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+    <button class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div class="exercise-table-div">
+  {% if search_performed %} {% if data %}
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Exercise Name</th>
+        <th scope="col" class="mob-hide">Difficulty Level</th>
+        <th scope="col" class="mob-hide">Exercise Type</th>
+        <th scope="col" class="mob-hide">Equipment Needed</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for d in data %}
+      <tr>
+        <th scope="row">
+          <a href="{{ url_for('exercise_info', name=d.name) }}"
+            >{{d.name.title()}}</a
+          >
+        </th>
+        <td class="mob-hide">{{d.difficulty.title()}}</td>
+        <td class="mob-hide">{{d.type.title().replace('_', ' ')}}</td>
+        <td class="mob-hide">{{d.equipment.title().replace('_', ' ')}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>No exercises meet search criteria</p>
+  {% endif %}{% endif %}
+</div>
+{% endblock %}

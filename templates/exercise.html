@@ -1,0 +1,52 @@
+{% extends 'base.html' %} {% block title %}Muscle Info{% endblock %} {% block
+content %}
+
+<div>
+  <h1>{{data.name.title() }}</h1>
+  <hr />
+  <div>
+    <p>
+      <strong>Exercise Type</strong>: {{data.type.title().replace('_', ' ') }}
+    </p>
+    <p>
+      <strong>Muscle Group</strong>: {{data.muscle.title().replace('_', ' ') }}
+    </p>
+    <p>
+      <strong>Equipment Needed</strong>: {{data.equipment.title().replace('_', '
+      ') }}
+    </p>
+    <p>
+      <strong>Difficulty Level</strong>: {{data.difficulty.title().replace('_',
+      ' ') }}
+    </p>
+    <p><strong>Instructions</strong>: {{data.instructions }}</p>
+  </div>
+</div>
+
+<form action="{{ url_for('favorite_exercise', name=data.name) }}" method="post">
+  {% if is_favorited %}
+  <button type="submit" class="btn btn-danger">Unfavorite Exercise</button>
+  {% else %}
+  <button type="submit" class="btn btn-primary">Favorite Exercise</button>
+  {% endif %}
+</form>
+
+<div class="mt-5">
+  <h2 class="mb-3">Related Videos</h2>
+  {%if yt_data %}
+  <div class="flex-div">
+    {% for vid in yt_data %}
+    <div class="flex-item">
+      <iframe
+        src="https://www.youtube.com/embed/{{vid.videoId}}"
+        frameborder="0"
+        allow="encrypted-media"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    {% endfor %} {% else %}
+    <p>No related videos were found.</p>
+  </div>
+</div>
+{% endif %} {% endblock %}

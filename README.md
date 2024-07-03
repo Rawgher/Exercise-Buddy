@@ -2,6 +2,8 @@
 
 Welcome to Exercise Buddy, your ultimate workout companion! Whether you're a fitness enthusiast or just starting your fitness journey, Exercise Buddy helps you stay on track with your workout goals. Sign up to give it a try.
 
+View the deployed site [Click Here](https://exercise-buddy.onrender.com/)
+
 ## Key Features
 
 - Search Exercises: Find exercises tailored to specific muscle groups, exercise types, and difficulty levels. The API in use contains a comprehensive list of thousands of exercises targeting every major muscle group.

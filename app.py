@@ -22,11 +22,11 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 connect_db(app)
 
-with app.app_context():  
-    # Drop all tables when changes are made
-    db.drop_all()
-    # Create all tables
-    db.create_all()
+# with app.app_context():  
+#     # Drop all tables when changes are made
+#     db.drop_all()
+#     # Create all tables
+#     db.create_all()
 
 # route checking if a user is logged in, then redirects to the login if not already signed in
 @app.route("/")

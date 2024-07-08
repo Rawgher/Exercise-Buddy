@@ -26,6 +26,12 @@ section.container.bg-white {
   display: none;
 }
 
+#loader {
+  display: none;
+  margin: 0 auto;
+  text-align: center;
+}
+
 @media (max-width: 767px) {
   .desk-only {
     display: none;
@@ -54,6 +60,7 @@ section.container.bg-white {
 
 .exercise-table-div {
   margin-top: 20px;
+  display: none;
 }
 
 @media (max-width: 1023px) {

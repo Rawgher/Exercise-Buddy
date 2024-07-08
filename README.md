@@ -14,6 +14,56 @@ View the deployed site [Click Here](https://exercise-buddy.onrender.com/)
 
 - Workout Tracking: Easily log your workouts on your user page. Record the type of exercise to keep track of your fitness activities.
 
+## To Run Locally
+
+Clone the repo and create the virtual environment.
+
+To create the virtual environment run the following:
+
+```
+$python -m venv venv
+```
+
+Switch to the new environment:
+
+```
+//windows
+$source venv/Scripts/activate
+
+//mac
+$source venv/bin/activate
+```
+
+Install the requirements:
+
+```
+pip install -r requirements.txt
+```
+
+Create a .env file on the root level of the project with the following fields filled out (links to register for the apis can be found at the end of this markdown):
+
+```
+API_NINJAS_KEY=your_api_key_here
+YT_API_KEY=your_api_key_here
+SECRET_KEY=your_secret_key_here
+TEST_DATABASE_URL=your_test_db_url_here
+DEV_DATABASE_URL=your_db_url_here
+```
+
+Once those are added you can create and seed the database:
+
+```
+$python seed.py
+```
+
+After completing all the steps above you will be able to run the app using the following:
+
+```
+$flask run
+```
+
+You can create your own user profile or use the built in test account with the credentials provided in the seed file.
+
 ## User Flow
 
 ![Exercise Buddy Splash Page](/app-screenshots/splash-page.png "Exercise Buddy Splash Page")

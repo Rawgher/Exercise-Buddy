@@ -33,20 +33,28 @@ content %}
 
 <div class="mt-5">
   <h2 class="mb-3">Related Videos</h2>
-  {%if yt_data %}
-  <div class="flex-div">
-    {% for vid in yt_data %}
-    <div class="flex-item">
-      <iframe
-        src="https://www.youtube.com/embed/{{vid.videoId}}"
-        frameborder="0"
-        allow="encrypted-media"
-        allowfullscreen
-      ></iframe>
-    </div>
-
-    {% endfor %} {% else %}
-    <p>No related videos were found.</p>
+  <div id="loader">
+    <img src="/static/images/loading.gif" alt="Loading..." />
   </div>
+  <div id="videos" class="flex-div" style="display: none">
+    {%if yt_data %}
+    <div class="flex-div">
+      {% for vid in yt_data %}
+      <div class="flex-item">
+        <iframe
+          src="https://www.youtube.com/embed/{{vid.videoId}}"
+          frameborder="0"
+          allow="encrypted-media"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      {% endfor %} {% else %}
+      <p>No related videos were found.</p>
+    </div>
+  </div>
+  {% endif %}
 </div>
-{% endif %} {% endblock %}
+
+<script src="../static/youtube-loader.js"></script>
+{% endblock %}

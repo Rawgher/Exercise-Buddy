@@ -19,8 +19,12 @@ block content %}
   </form>
 </div>
 
-<div class="exercise-table-div">
-  {% if search_performed %} {% if data %}
+{% if search_performed %}
+<div id="loader">
+  <img src="/static/images/loading.gif" alt="Loading..." />
+</div>
+<div class="exercise-table-div" id="content">
+  {% if data %}
   <table class="table">
     <thead class="thead-light">
       <tr>
@@ -47,6 +51,8 @@ block content %}
   </table>
   {% else %}
   <p>No exercises meet search criteria</p>
-  {% endif %}{% endif %}
+  {% endif %}
 </div>
+{% endif %}
+<script src="../static/exercise-loader.js"></script>
 {% endblock %}
